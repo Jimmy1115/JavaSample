@@ -7,6 +7,7 @@ public class SampleCode {
 
         System.out.println("Hello World!");
         new SampleEquals();
+        new SampleThrows(1);
     }
 }
 
@@ -47,7 +48,7 @@ class SampleEquals {
                 SampleEquals se = (SampleEquals)obj;
                 // 要import org.apache.commons.lang3.builder.EqualsBuilder;
                 return new EqualsBuilder().
-                        appendSuper(super.equals(obj)). // 這一行可以不用，但差異就不知道了(可以傳遞比較到父類別，不懂什麼狀況)
+                        //appendSuper(super.equals(obj)). // 這一行有問題，可以不用，但差異就不知道了(可以傳遞比較到父類別，不懂什麼狀況)
                         append(tradeMake,se.tradeMake).
                         append(kind,se.kind).
                         append(color,se.color).
@@ -71,5 +72,55 @@ class SampleEquals {
                 append(kind).
                 append(color).
                 toHashCode();
+    }
+}
+
+class MemberIDException extends Exception{
+    public MemberIDException(String mID){
+        super("會員證號 " + mID + " 驗證失敗 !");
+    }
+    public void contactWith(){
+        out.println("請連絡服務人員: ");
+    }
+}
+// throw自定例外方法
+class SampleThrows{
+    static int numerator = 20;
+    static int[] denominator = {0, 2, 4};
+    static String answer;
+
+    SampleThrows(int type){
+        if (type == 1) {
+            try {
+                calc(1);
+            } catch (Exception e) {
+                out.println("錯誤訊息: " + e.getMessage());
+            }
+            out.println(numerator + " / " + denominator[0] + " = " + answer);
+            out.println("計算完畢");
+        }else if (type == 2) {
+            try{
+                checkMemberID("14566789");
+            }
+            catch (MemberIDException e){
+                out.println("錯誤訊息: " + e.getMessage());
+                e.contactWith();
+            }
+        }
+    }
+
+    public static void calc(int index) throws Exception{
+        double ans = 0;
+        if (index == 0 || index >= denominator.length){
+            answer = "無法計算";
+            throw new Exception("denominator[] 的索引值" + "不得為 " + index);
+        }
+        ans = numerator / denominator[index];
+        answer = String.valueOf(ans);
+    }
+    public static void checkMemberID(String mID) throws MemberIDException {
+        if (mID.length() != 5) {
+            throw new MemberIDException(mID);
+        }
     }
 }
