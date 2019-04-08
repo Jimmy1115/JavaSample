@@ -1,3 +1,4 @@
+package SampleCode;
 import java.util.HashMap;
 import org.apache.commons.lang3.builder.*;
 import static java.lang.System.out;
@@ -6,8 +7,9 @@ public class SampleCode {
     public static void main(String[] args) {
 
         System.out.println("Hello World!");
-        new SampleEquals();
-        new SampleThrows(1);
+        // new SampleEquals();
+        // new SampleThrows(1);
+        new SampleThread(5);
     }
 }
 
