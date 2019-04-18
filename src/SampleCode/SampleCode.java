@@ -9,7 +9,8 @@ public class SampleCode {
         System.out.println("Hello World!");
         // new SampleEquals();
         // new SampleThrows(1);
-        new SampleThread(5);
+        // new SampleThread(5);
+        new SampleFile(1) ;
     }
 }
 
