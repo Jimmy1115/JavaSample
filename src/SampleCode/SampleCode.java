@@ -10,7 +10,11 @@ public class SampleCode {
         // new SampleEquals();
         // new SampleThrows(1);
         // new SampleThread(5);
-        new SampleFile(1) ;
+        new SampleIO(1) ;
+        // new SampleFormat(1);
+        // new SampleRegex(1);
+        // new SampleFormatter(1);
+        new SampleScanner(1);
     }
 }
 

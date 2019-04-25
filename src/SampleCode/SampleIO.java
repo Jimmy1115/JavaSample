@@ -2,8 +2,8 @@ package SampleCode;
 import javax.lang.model.util.SimpleElementVisitor7;
 import java.io.*;
 
-public class SampleFile {
-    SampleFile(int type){
+public class SampleIO {
+    SampleIO(int type){
         if (type ==1){
             // createFile();
             // getFileList();
